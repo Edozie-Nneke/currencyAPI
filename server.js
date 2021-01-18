@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Get Route
 app.get('/api/rates', async (req, res) => {
-    console.log('Query to endpoint: ', req.query);
+    //console.log('Query to endpoint: ', req.query);
 
     if(req.query.base && req.query.currency){
         // Initialize the results object
@@ -35,9 +35,9 @@ app.get('/api/rates', async (req, res) => {
             results.rates = response.data.rates;
     
         }catch(error){
-            console.error(`There was an error with the exchange call: ${error}`);
-            console.error(error.response.status);
-            console.error(error.response.data);
+            // console.error(`There was an error with the exchange call: ${error}`);
+            // console.error(error.response.status);
+            // console.error(error.response.data);
 
             if(error.response.data.error.startsWith('Base')){
                 return res.status(400).send(error.response.data);
@@ -74,5 +74,5 @@ app.listen(port, (error) => {
     if(error){
         console.error(error);
     }
-    console.log(`Server started and listening on port: ${port}`);
+    //console.log(`Server started and listening on port: ${port}`);
 });
